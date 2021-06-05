@@ -1,0 +1,37 @@
+COMPILER SortLuis
+
+CHARACTERS 
+
+letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz". 
+digit = "0123456789" .
+tab = CHR(9).
+eol = CHR(10).
+
+KEYWORDS
+
+while = "while".
+do = "do".
+if = "if".
+switch = "switch"
+
+TOKENS
+
+ident = letter{letter|digit} EXCEPT KEYWORDS.
+number = digit{digit}.
+
+PRODUCTIONS
+
+operations<val>=
+    (.lst=[].)
+    (.for i in range(val):.)
+    (.      lst.append(input("Enter te word to sort: ")).)
+    (.lst.sort().)
+    (.result=lst.)
+.
+
+main<>  = 	
+    (.val=input("Enter the number of words to sort: ").)
+    (.result=operations(int(val)).)
+.
+
+END SortLuis

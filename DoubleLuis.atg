@@ -1,0 +1,52 @@
+COMPILER DoubleLuis    
+
+CHARACTERS 
+
+digit="0123456789".
+tab=CHR(9).
+eol=CHR(10).
+blanco=eol+CHR(13)+tab.
+
+KEYWORDS
+
+while ="while".
+do = "do".
+
+TOKENS
+
+number = digit{digit}.
+decnumber = digit{digit}"."digit{digit}.
+white = blanco{blanco}.
+
+PRODUCTIONS
+
+security<val>=
+    (.try:.)
+    (.      result = float(val).)
+    (.except ValueError:.)
+    (.      print("Not int or double, exit").)
+    (.      exit().)
+.
+
+operaciones<val1,val2,sig1>  = 	
+    (.if sig1=="*":.)
+    (.    res= val1*val2.)
+    (.if sig1=="/":.)
+    (.    res= val1/val2.)
+    (.if sig1=="+":.)
+    (.    res= val1+val2.)
+    (.if sig1=="-":.)
+    (.    res= val1-val2.)
+    (.result=res.)
+.
+
+main<>  = 	
+    (.temp=input("Enter val1: ").)
+    (.val1=security(temp).)
+    (.sig1=input("Enter sign: ").)
+    (.temp=input("Enter val2: ").)
+    (.val2=security(temp).)
+    (.result=operaciones(val1,val2,sig1).)
+.
+
+END DoubleLuis
